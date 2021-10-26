@@ -1,12 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from . models import produit, client
 from . forms import ClientForm
 
 # Create your views here.
 def index(request):
     obj = produit.objects.all()
-    context = {'produits':obj}
+    taille = len(obj)
+    context = {'produits':obj, 'taille':taille}
     return render(request, "comapp/index.html", context)
+
+def on_delete(request, id):
+    id = int(id)
+    obj = produit.objects.get(id=id).delete()
+    return redirect("comapp:index")
+
 
 def details(request, id):
     pk = produit.objects.get(id=id)
