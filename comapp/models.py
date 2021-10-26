@@ -16,12 +16,3 @@ class produit(models.Model):
     # produit return designation et price
     def __str__(self):
         return f"{self.designation} | {self.price}"
-
-# cette class n'est pas utilisé mais il peut dependre de forms.py, views.py avant de supprimer verifier 
-# qu'il y a pas d'import dans views et forms
-class client(models.Model):
-    item = models.IntegerField()
-    votre_nom = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f"{self.votre_nom} | {self.item}"

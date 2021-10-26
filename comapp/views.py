@@ -33,9 +33,3 @@ def details(request, id):
     pk = produit.objects.get(id=id)
     context = {'produit': pk}
     return render(request, 'comapp/details.html', context)
-
-# fonction non utilisé avant de decommenter voir d'avoir urls.py
-# def pagne(request, id):
-#     pk = produit.objects.get(id=id)
-#     context = {'produit': pk}
-#     return render(request, 'comapp/pagne.html', context)

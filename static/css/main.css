@@ -1,0 +1,11 @@
+/* index.html */
+.col-sm-4{
+    text-align: justify;
+    color:blue;
+}
+
+/* details.html */
+.col-sm-6 p{
+    text-align: justify;
+    color: blue;
+}
