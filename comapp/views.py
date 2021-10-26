@@ -4,7 +4,7 @@ from . forms import ClientForm
 
 # Create your views here.
 def index(request):
-    obj = produit.objects.all()
+    obj = produit.objects.all().order_by('-pk')
     taille = len(obj)
     context = {'produits':obj, 'taille':taille}
     return render(request, "comapp/index.html", context)
@@ -17,14 +17,7 @@ def on_delete(request, id):
 
 def details(request, id):
     pk = produit.objects.get(id=id)
-    cli = client.objects.get(item=id)
-    if request.method=="POST":
-        form = ClientForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = ClientForm
-    context = {'produit': pk, 'form':form, 'item':cli}
+    context = {'produit': pk}
     return render(request, 'comapp/details.html', context)
 
 def pagne(request, id):
