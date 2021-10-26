@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from . models import client
 
+# cette class n'est pas en service 
 class ClientForm(ModelForm):
     class Meta:
         model = client
