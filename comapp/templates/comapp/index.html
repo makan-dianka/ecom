@@ -5,39 +5,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <title>Document</title>
   </head>
   <body>
       <br /> <br />
-    <h1 style="text-align: center;">Produits</h1>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Designation</th>
-            <th scope="col">Descriptions</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Détail</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-            {% for produit in produits %} 
-            <tr>
-              <th scope="row">{{produit.id}}</th>
-              <td>{{produit.designation}}</td>
-              <td>{{produit.description}}</td>
-              <td>{{produit.price}}</td>
-              <img src="{{produit.img.url}}">  
-              <td><a href="/details/{{produit.id}}">Voir plus...</a></td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    <div class="container">
+        <img src="{% static 'images/images/images.png'  %}" width="155" height="155"> {{ taille }} articles
+        <hr>
+        {% for produit in produits %} 
+        <h2>{{produit.designation}}</h2>
+        <p>{{produit.price}} €</p>
+          <div class="row">
+            {% if produit.img %}
+            <div class="col-sm-4">
+              <img src="/static{{produit.img.url}}" with="200" height="200">
+            </div>
+            {% endif %}
+            <div class="col-sm-4">
+              {{produit.description}}
+            </div>
+            <div class="col-sm-4">
+              <a href="details/{{produit.id}}" class="btn btn-primary btn-lg">Détails</a> <br /> <br />
+              <a href="/delete/{{produit.id}}" class="btn btn-danger btn-lg">Supprimer</a>
+            </div>
+          </div>
+          <hr>
+        {% endfor %}
+    </div>
 
   
-
+    <script src="{% static 'js/main.css' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

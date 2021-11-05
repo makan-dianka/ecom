@@ -1,23 +1,37 @@
 <!doctype html>
-<html lang="en">
+{% load static %}
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Détails du produit</title>
   </head>
   <body>
-    <h5 style="float: right;">Panier {{item}}</h5>
-      <br />
-       <br />
+    <br /> <br />
+    <div class="container">
+      <h1> <a href="{% url 'comapp:index' %}"><< Home</a></h1>
+      <h1 style="text-align: center;">{{produit.designation}}</h1>
+      <h3 style="text-align: center;">{{produit.price}} €</h3>
+      <hr width="150">
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="/static/{{produit.img.url}}" width="500" height="500">
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>{{produit.description}}</p>
+              <h2 class="btn btn-primary btn-lg btn-block"><a href="#" style="color:white;">Acheter</a></h2> 
+            </div>
+          </div>
 
-    <h1 style="text-align: center;">{{produit.designation}}</h1>
-    <p style="text-align: center;">{{produit.description}}</p> 
-
-      <script>
-          var art = document.getElementById('article').value = "{{item}}";
-      </script>
+        </div>
+      </div>
+    </div>
+    
+    <script src="{% static 'js/main.css' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
